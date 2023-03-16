@@ -1,4 +1,4 @@
-#include <stdio>
+#include <stdio.h>
 
 /* This program prints the size of various types on the pc */
 
