@@ -1,6 +1,11 @@
 #include <stdio.h>
+/* This program uses puts to print characters */
 
-/* This program prints ""Programming is like building a multilingual puzzle" */
+/**
+ * main - Entry point
+ * puts - prints ""Programming is like building a mulitlingual puzzle"
+ * Return: Always 0 (Success)
+ */
 
 int main(void)
 {
