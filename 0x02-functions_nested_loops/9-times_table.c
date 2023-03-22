@@ -11,37 +11,42 @@
 
 void times_table(void)
 {
-	int num1, num2;
+	int num, multi;
 
-	num1 = 0;
-
-	while (num1 <= 9)
+	for (num = 0; num <= 9; num++)
 	{
-		for (num2 = 0; num2 <= 9; num2++)
+		for (multi = 0; multi <= 9; multi++)
 		{
-			int result = num1 * num2;
+			int res = num * multi;
 
-			if (num2 == 9)
+			if (multi == 9)
 			{
-				_putchar(result + '0');
-				_putchar('\n');
+				if (res < 10)
+				{
+					_putchar(res + '0');
+					_putchar('\n');
+				}
+				else
+				{
+					_putchar((res / 10) + '0');
+					_putchar((res % 10) + '0');
+					_putchar('\n');
+				}
 			}
-			else if (result < 10)
+			else if (res <= 9)
 			{
-				_putchar(result + '0');
+				_putchar(res + '0');
 				_putchar(',');
 				_putchar(' ');
 				_putchar(' ');
 			}
 			else
 			{
-				_putchar((result / 10) + '0');
-				_putchar((result % 10) + '0');
+				_putchar((res / 10) + '0');
+				_putchar((res % 10) + '0');
 				_putchar(',');
 				_putchar(' ');
 			}
 		}
-
-		num1++;
 	}
 }
