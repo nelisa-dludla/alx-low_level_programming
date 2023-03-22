@@ -19,34 +19,26 @@ void times_table(void)
 		{
 			int res = num * multi;
 
-			if (multi == 9)
-			{
-				if (res < 10)
-				{
-					_putchar(res + '0');
-					_putchar('\n');
-				}
-				else
-				{
-					_putchar((res / 10) + '0');
-					_putchar((res % 10) + '0');
-					_putchar('\n');
-				}
-			}
-			else if (res <= 9)
+			if (multi == 0)
 			{
 				_putchar(res + '0');
+			}
+			if (res <= 9 && multi != 0)
+			{
 				_putchar(',');
 				_putchar(' ');
 				_putchar(' ');
+				_putchar(res + '0');
 			}
-			else
+			else if (res >= 10)
 			{
+				_putchar(',');
+				_putchar(' ');
 				_putchar((res / 10) + '0');
 				_putchar((res % 10) + '0');
-				_putchar(',');
-				_putchar(' ');
 			}
 		}
+
+		_putchar('\n');
 	}
 }
