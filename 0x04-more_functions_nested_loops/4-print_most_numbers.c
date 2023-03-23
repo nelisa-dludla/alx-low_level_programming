@@ -6,8 +6,8 @@
  * Followed by a new line
  */
 
-/*
- * print_most_numbers - Function prints number 0 - 9 and not 2 and 4
+/**
+ * print_most_numbers - prints the numbers, 0 - 9 except 2 and 4
  *
  * Return: Void
  */
