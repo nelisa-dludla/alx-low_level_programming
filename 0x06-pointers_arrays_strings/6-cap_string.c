@@ -6,13 +6,14 @@
 
 /**
  * cap_string - Function capitalizes all the words of a string
- * @str: Pointer parameter for a string
+ * @s: Pointer parameter for a string
  * Return: Str
  */
 
-char *cap_string(char *str)
+char *cap_string(char *s)
 {
 	int i;
+	char *str = s;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -28,5 +29,5 @@ char *cap_string(char *str)
 			}
 		}
 	}
-	return (str);
+	return (s);
 }
