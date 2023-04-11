@@ -33,6 +33,11 @@ char *str_concat(char *s1, char *s2)
 
 	new = (char *) malloc((len_tot + 1) * sizeof(char));
 
+	if (new == NULL)
+	{
+		return (NULL);
+	}
+
 	for (i = 0; i < len1; i++)
 	{
 		new[i] = s1[i];
@@ -43,12 +48,7 @@ char *str_concat(char *s1, char *s2)
 		new[len1 + i] = s2[i];
 	}
 
-	new[len_tot + 1] = '\0';
-
-	if (new == NULL)
-	{
-		return (NULL);
-	}
+	new[len_tot] = '\0';
 
 	return (new);
 }
