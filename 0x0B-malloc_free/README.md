@@ -19,6 +19,12 @@ In this project, I was looking at the following functions:
 4-free_grid.c - a function that frees a 2 dimensional grid previously created by your alloc_grid function
 ```
 
+## Advanced Tasks
+
+```C
+100-argstostr.c - a function that concatenates all the arguments of your program
+```
+
 ## Requirements
 
 ## C
