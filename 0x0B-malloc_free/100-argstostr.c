@@ -26,11 +26,11 @@ char *argstostr(int ac, char **av)
 	str_len = 0;
 
 	for (i = 0; i < ac; i++)
-	{	
-		str_len = str_len + strlen(av[i]); 
+	{
+		str_len = str_len + strlen(av[i]);
 	}
 
-	new = (char *) malloc((str_len + ac) * sizeof(char));
+	new = (char *) malloc((str_len + ac + 1) * sizeof(char));
 
 	if (new == NULL)
 	{
