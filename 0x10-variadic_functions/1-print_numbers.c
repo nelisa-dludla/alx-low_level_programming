@@ -17,24 +17,27 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list args;
 	unsigned int i, j;
 
-	if (separator == NULL)
-	{
-		return;
-	}
-
 	va_start(args, n);
 
 	for (i = 0; i < n; i++)
 	{
+		j = va_arg(args, int);
+
 		if (i == (n - 1))
 		{
-			j = va_arg(args, int);
+
 			printf("%d ", j);
 		}
 		else
 		{
-			j = va_arg(args, int);
-			printf("%d%s", j, separator);
+			if (separator == NULL)
+			{
+				printf("%d ", j);
+			}
+			else
+			{
+				printf("%d%s", j, separator);
+			}
 		}
 	}
 	va_end(args);
