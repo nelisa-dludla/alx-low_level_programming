@@ -9,8 +9,8 @@
 
 size_t print_listint(const listint_t *h)
 {
-	unsigned numNodes = 0;
 	const listint_t *current = h;
+	size_t numNodes = 0;
 
 	if (h == NULL)
 	{
