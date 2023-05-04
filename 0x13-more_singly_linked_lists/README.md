@@ -39,3 +39,5 @@ In this project, I looked at the following concept:
 10. File: `9-insert_nodeint.c` - a function that inserts a new node at a given position
 
 11. File: `10-delete_nodeint.c` - a function that deletes the node at index `index` of a `listint_t` linked list
+
+12. File: `100-reverse_listint.c` - a function that reverses a `listint_t` linked list
