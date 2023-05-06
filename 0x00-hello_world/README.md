@@ -1,45 +1,33 @@
-**In this directory, you will find all the scripts and C programs I have created for my Shell C Tasks:**
+# C - Hello, World
 
-1. 0-preprocessor - a script that runs a C file through the preprocessor and save the result into another file
-2. 1-compiler - a script that  compiles a C file but does not link
-3. 2-assembler - a script that generates the assembly code of a C code and save it in an output file
+In this project, I looked at the following concept:
 
-   - The C file name will be saved in the variable $CFILE
-   - The output file should be named the same as the C file, but with the extension .s instead of .c
+- C Programming
 
-4. 3-name - a script that compiles a C file and creates an executable named cisfun
+## Info
 
-   - The C file name will be saved in the variable $CFILE
+### C
 
-5. 4-puts.c - a C program that prints exactly "Programming is like building a multilingual puzzle, followed by a new line
+- Files were compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
+- All files end with a new line
+- Not allowed to use `system`
+- Code follows the `Betty` style. It was checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 
-   - Use the function puts
-   - You are not allowed to use printf
-   - Your program should end with the value 0
+### Shell Scripts
 
-6. 5-printf.c - a C program that prints exactly with proper grammar, but the outcome is a piece of art,, followed by a new line
+- All scripts were tested on Ubuntu 20.04 LTS
+- All scripts are exactly two lines long (`$ wc -l file` should print 2)
+- All files end with a new line
+- The first line of all files is exactly `#!/bin/bash`
 
-   - Use the function printf
-   - You are not allowed to use the function puts
-   - Your program should return 0
-   - Your program should compile without warning when using the -Wall gcc option
+## Tasks
 
-7. 6-size.c - a C program that prints the size of various types on the computer it is compiled and run on
-
-   - You should produce the exact same output as in the example
-   - Warnings are allowed
-   - our program should return 0
-   - You might have to install the package libc6-dev-i386 on your Linux to test the -m32 gcc option
-
-**These programs and scripts are part of the Advanced Tasks:**
-
-8. 100-intel - a script that generates the assembly code (Intel syntax) of a C code and save it in an output file
-
-   - The C file name will be saved in the variable $CFILE
-   - The output file should be named the same as the C file, but with the extension .s instead of .c
-
-9. 101-quote.c - a C program that prints exactly and that piece of art is useful" - Dora Korpar, 2015-10-19, followed by a new line, to the standard error
-
-   - not allowed to use any functions listed in the NAME section of the man (3) printf or man (3) puts
-   - program should return 1
-   - program should compile without any warnings when using the -Wall gcc option
+- `0-preprocessor` - a script that runs a C file through the preprocessor and save the result into another file
+- `1-compiler` - a script that compiles a C file but does not link
+- `2-assembler` - a script that generates the assembly code of a C code and save it in an output file
+- `3-name` - a script that compiles a C file and creates an executable named `cisfun`
+- `4-puts.c` - a C program that prints exactly `"Programming is like building a multilingual puzzle`, followed by a new line
+- `5-printf.c` - a C program that prints exactly `with proper grammar, but the outcome is a piece of art,`, followed by a new line
+- `6-size.c` - a C program that prints the size of various types on the computer it is compiled and run on
+- `100-intel` - a script that generates the assembly code (Intel syntax) of a C code and save it in an output file
+- `101-quote.c` - a C program that prints exactly `and that piece of art is useful" - Dora Korpar, 2015-10-19`, followed by a new line, to the standard error
