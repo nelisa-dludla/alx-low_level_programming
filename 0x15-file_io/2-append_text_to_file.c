@@ -11,7 +11,6 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	FILE *fptr;
-	int result;
 
 	if (filename == NULL)
 	{
@@ -20,7 +19,7 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (text_content == NULL)
 	{
-		return (-1);
+		return (1);
 	}
 
 	fptr = fopen(filename, "a");
@@ -30,9 +29,7 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 	}
 
-	result = fprintf(fptr, "%s", text_content);
-
-	if (result < 0)
+	if (fputs(text_content, fptr) == EOF)
 	{
 		fclose(fptr);
 		return (-1);
