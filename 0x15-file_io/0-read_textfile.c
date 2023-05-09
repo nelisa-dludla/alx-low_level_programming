@@ -48,8 +48,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	letters_written = fwrite(buffer, 1, letters_read, stderr);
-	if (ferror(stderr) || letters_written != letters_read)
+	letters_written = fwrite(buffer, 1, letters_read, stdout);
+	if (ferror(stdout) || letters_written != letters_read)
 	{
 		fclose(fptr);
 		return (0);
