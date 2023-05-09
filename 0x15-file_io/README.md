@@ -12,6 +12,7 @@ In this project, I looked at the following concept:
 - Use of global variables was not allowed
 - No more than 5 functions per file
 - Authorized functions and marcos are `malloc`, `free`, and `exit`. Any use of functions like `printf`, `puts`, `calloc`, `realloc` etc… is forbidden (Unless otherwise stated)
+- Allowed syscalls: `read`, `write`, `open`, `close`
 - Allowed to use [\_putchar](https://github.com/holbertonschool/_putchar.c/blob/master/_putchar.c)
 - The `main.c` files were used to test the functions
 - The prototypes of all functions are included in the header file called `main.h`
