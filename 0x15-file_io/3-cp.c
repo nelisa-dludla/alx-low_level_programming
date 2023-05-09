@@ -1,62 +1,47 @@
 #include "main.h"
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 
 /**
- * copy_file - Copies the contents of a source file to a destination file
- * @src: The source file
- * @dest: The destination file
+ * print_usage_error - Function prints a usage error message
  */
-
-void copy_file(const char *src, const char *dest)
+void print_usage_error(void)
 {
-	FILE *src_file, *dest_file;
-	char buffer[1024];
-	size_t bytes_written, bytes_read;
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+	exit(97);
+}
 
-	/* Open source file */
-	src_file = fopen(src, "r");
-	if (src_file == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
-		exit(98);
-	}
+/**
+ * print_read_error - Function prints a read error message
+ * @filename: Pointer to file
+ */
+void print_read_error(char *filename)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+	exit(98);
+}
 
-	/* Open destination file */
-	dest_file = fopen(dest, "w");
-	if (dest_file == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", dest);
-		exit(99);
-	}
+/**
+ * print_write_error - Function prints a write error message
+ * @filename: Pointer to file
+ */
+void print_write_error(char *filename)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+	exit(99);
+}
 
-	/* Copy content from source to destination file */
-	while ((bytes_read = fread(buffer, 1, 1024, src_file)) > 0)
-	{
-		bytes_written = fwrite(buffer, 1, bytes_read, dest_file);
-		if (bytes_written != bytes_read)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", dest);
-		}
-	}
-
-	/* Close opened files */
-	if (fclose(src_file) != 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fileno(src_file));
-		exit(100);
-	}
-
-	if (fclose(dest_file) != 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fileno(dest_file));
-		exit(100);
-	}
-	/* Set permissions */
-	chmod(dest, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+/**
+ * print_close_error - Function prints a close error message
+ * @fd: File descriptor
+ */
+void print_close_error(int fd)
+{
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	exit(100);
 }
 
 /**
@@ -65,18 +50,43 @@ void copy_file(const char *src, const char *dest)
  * @argv: Number of argument vectors
  * Return: 0 (Success) || Error specific error codes
  */
-
 int main(int argc, char **argv)
 {
+	int src_fd, dest_fd, bytes_read, bytes_written;
+	char buffer[1024];
 
 	/* Check the number of arguments */
 	if (argc != 3)
+		print_usage_error();
+
+	/* Open source file */
+	src_fd = open(argv[1], O_RDONLY);
+	if (src_fd == -1)
+		print_read_error(argv[1]);
+
+	/* Open destination file */
+	dest_fd = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
+	if (dest_fd == -1)
+		print_write_error(argv[2]);
+
+	/* Copy content from source to destination file */
+	while ((bytes_read = read(src_fd, buffer, 1024)) > 0)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
+		bytes_written = write(dest_fd, buffer, bytes_read);
+
+		if (bytes_written != bytes_read)
+			print_write_error(argv[2]);
 	}
 
-	copy_file(argv[1], argv[2]);
+	/* Close opened files */
+	if (close(src_fd) == -1)
+		print_close_error(src_fd);
+
+	if (close(dest_fd) == -1)
+		print_close_error(dest_fd);
+
+	/* Set permissions */
+	chmod(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 
 	return (0);
 }
