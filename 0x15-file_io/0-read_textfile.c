@@ -27,8 +27,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	content = malloc(letters);
-	bytesRead = 0;
-	totalBytesRead = 0;
+	bytesRead, totalBytesRead = 0;
 	while ((bytesRead = read(fd, content, letters)) > 0)
 	{
 		bytesWritten = write(STDOUT_FILENO, content, bytesRead);
