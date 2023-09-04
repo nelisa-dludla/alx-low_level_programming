@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		fdTo = open(argv[2], O_WRONLY | O_CREAT, 0600);
+		fdTo = open(argv[2], O_WRONLY | O_CREAT, 0664);
 	}
 	if (fdTo == -1)
 	{
