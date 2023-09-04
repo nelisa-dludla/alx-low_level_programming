@@ -49,15 +49,15 @@ int main(int argc, char *argv[])
 	}
 	if (fdTo == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[3]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 	while ((bytesRead = read(fdFrom, content, sizeof(content))) > 0)
 	{
-		bytesWritten = write(fdTo, content, sizeof(content));
+		bytesWritten = write(fdTo, content, bytesRead);
 		if (bytesWritten == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[3]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
 	}
