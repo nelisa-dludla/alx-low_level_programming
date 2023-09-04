@@ -12,6 +12,11 @@ int create_file(const char *filename, char *text_content)
 	int fd;
 	ssize_t bytesWritten;
 
+	if (filename == NULL)
+	{
+		return (-1);
+	}
+
 	if (access(filename, F_OK) == 0)
 	{
 		fd = open(filename, O_WRONLY | O_TRUNC);
@@ -24,6 +29,11 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 	{
 		return (-1);
+	}
+
+	if (text_content == NULL)
+	{
+		text_content = "";
 	}
 
 	bytesWritten = write(fd, text_content, strlen(text_content));
